@@ -13,24 +13,20 @@ namespace Library
     public partial class Form1 : Form
     {
 
+        List<Panel> listPanel = new List<Panel>();
+        int index;
+
         public Form1()
         {
             InitializeComponent();
             Label startingText = new Label();
             timer1.Start();
-
-            Label WhoIAm = new Label();
-            WhoIAm.AutoSize = true;
-            WhoIAm.Width = 140;
-            WhoIAm.Text = "Хто я?";
-            WhoIAm.ForeColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
-            WhoIAm.Font = new System.Drawing.Font("Calibri Light", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            WhoIAm.Left = (this.ClientSize.Width - WhoIAm.Width) / 2;
-            WhoIAm.Top = (this.ClientSize.Height - WhoIAm.Height) / 2 - 90;
-            this.Controls.Add(WhoIAm);
         }
 
         int timeLeft = 150;
+
+        public object WhoIAm { get; private set; }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             startingText.ForeColor = System.Drawing.Color.White;
@@ -57,18 +53,28 @@ namespace Library
                 ActiveForm.Controls.Remove(startingText);
                 startingText = null;
                 whoiamPanel.Visible = true;
+                authPanel.Visible = true;
             }    
    
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if (index < listPanel.Count - 1)
+                listPanel[++index].BringToFront();
         }
 
         private void decButton_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Wow");
+        }
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            listPanel.Add(whoiamPanel);
+            listPanel.Add(authPanel);
+            listPanel[index].BringToFront();
         }
     }
 }
