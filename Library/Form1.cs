@@ -85,7 +85,7 @@ namespace Library
         private void loginButton_Click(object sender, EventArgs e)
         {
             SqlConnection Accounts = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\harva\Documents\Library\Library\Database.mdf;Integrated Security=True;");
-            SqlDataAdapter sda = new SqlDataAdapter("Select Count (*) from Accounts where Username = '" + loginTextBox.Text + "' and Password = '" + loginPassTextBox.Text + "'", Accounts);
+            SqlDataAdapter sda = new SqlDataAdapter("Select Count (*) from LibAccounts where Username = '" + loginTextBox.Text + "' and Password = '" + loginPassTextBox.Text + "'", Accounts);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             if (dt.Rows[0][0].ToString() == "1")
