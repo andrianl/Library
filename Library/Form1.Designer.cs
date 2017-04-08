@@ -45,34 +45,40 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.whoiamPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.LibrarianPanel = new System.Windows.Forms.Panel();
-            this.libSearch1 = new Library.LibSearch();
+            this.appData = new Library.AppData();
+            this.readerAccountsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.readerAccountsTableAdapter = new Library.AppDataTableAdapters.ReaderAccountsTableAdapter();
+            this.tableAdapterManager = new Library.AppDataTableAdapters.TableAdapterManager();
             this.libAccountence1 = new Library.LibAccountence();
-            this.LibSidebarPan = new System.Windows.Forms.Panel();
-            this.NewLibButton = new System.Windows.Forms.Button();
-            this.SearchLibButton = new System.Windows.Forms.Button();
-            this.AccLibButton = new System.Windows.Forms.Button();
+            this.libSearch1 = new Library.LibSearch();
             this.RegLibPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.regLibTextBox = new System.Windows.Forms.TextBox();
-            this.passLibTextBox = new System.Windows.Forms.TextBox();
-            this.RegLibButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.RegLibButton = new System.Windows.Forms.Button();
+            this.passLibTextBox = new System.Windows.Forms.TextBox();
+            this.regLibTextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.LibSidebarPan = new System.Windows.Forms.Panel();
+            this.AccLibButton = new System.Windows.Forms.Button();
+            this.SearchLibButton = new System.Windows.Forms.Button();
+            this.NewLibButton = new System.Windows.Forms.Button();
+            this.LibrarianPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.authPanel.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.whoiamPanel.SuspendLayout();
-            this.LibrarianPanel.SuspendLayout();
-            this.LibSidebarPan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.appData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.readerAccountsBindingSource)).BeginInit();
             this.RegLibPanel.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.LibSidebarPan.SuspendLayout();
+            this.LibrarianPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -85,7 +91,7 @@
             this.startingText.Font = new System.Drawing.Font("Calibri Light", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.startingText.Location = new System.Drawing.Point(0, 0);
             this.startingText.Name = "startingText";
-            this.startingText.Size = new System.Drawing.Size(840, 477);
+            this.startingText.Size = new System.Drawing.Size(840, 497);
             this.startingText.TabIndex = 1;
             this.startingText.Text = "label1";
             this.startingText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -290,25 +296,26 @@
             this.whoiamPanel.TabIndex = 10;
             this.whoiamPanel.Visible = false;
             // 
-            // LibrarianPanel
+            // appData
             // 
-            this.LibrarianPanel.Controls.Add(this.libSearch1);
-            this.LibrarianPanel.Controls.Add(this.libAccountence1);
-            this.LibrarianPanel.Controls.Add(this.LibSidebarPan);
-            this.LibrarianPanel.Controls.Add(this.RegLibPanel);
-            this.LibrarianPanel.Location = new System.Drawing.Point(0, 0);
-            this.LibrarianPanel.Name = "LibrarianPanel";
-            this.LibrarianPanel.Size = new System.Drawing.Size(840, 477);
-            this.LibrarianPanel.TabIndex = 11;
-            this.LibrarianPanel.Visible = false;
+            this.appData.DataSetName = "AppData";
+            this.appData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // libSearch1
+            // readerAccountsBindingSource
             // 
-            this.libSearch1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.libSearch1.Location = new System.Drawing.Point(244, 42);
-            this.libSearch1.Name = "libSearch1";
-            this.libSearch1.Size = new System.Drawing.Size(553, 306);
-            this.libSearch1.TabIndex = 2;
+            this.readerAccountsBindingSource.DataMember = "ReaderAccounts";
+            this.readerAccountsBindingSource.DataSource = this.appData;
+            // 
+            // readerAccountsTableAdapter
+            // 
+            this.readerAccountsTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.LibAccountsTableAdapter = null;
+            this.tableAdapterManager.ReaderAccountsTableAdapter = this.readerAccountsTableAdapter;
+            this.tableAdapterManager.UpdateOrder = Library.AppDataTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // libAccountence1
             // 
@@ -317,61 +324,13 @@
             this.libAccountence1.Size = new System.Drawing.Size(550, 290);
             this.libAccountence1.TabIndex = 1;
             // 
-            // LibSidebarPan
+            // libSearch1
             // 
-            this.LibSidebarPan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(81)))), ((int)(((byte)(81)))));
-            this.LibSidebarPan.Controls.Add(this.NewLibButton);
-            this.LibSidebarPan.Controls.Add(this.SearchLibButton);
-            this.LibSidebarPan.Controls.Add(this.AccLibButton);
-            this.LibSidebarPan.Location = new System.Drawing.Point(0, 0);
-            this.LibSidebarPan.Name = "LibSidebarPan";
-            this.LibSidebarPan.Size = new System.Drawing.Size(218, 477);
-            this.LibSidebarPan.TabIndex = 0;
-            // 
-            // NewLibButton
-            // 
-            this.NewLibButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.NewLibButton.FlatAppearance.BorderSize = 0;
-            this.NewLibButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NewLibButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NewLibButton.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.NewLibButton.Location = new System.Drawing.Point(0, 222);
-            this.NewLibButton.Name = "NewLibButton";
-            this.NewLibButton.Size = new System.Drawing.Size(218, 41);
-            this.NewLibButton.TabIndex = 2;
-            this.NewLibButton.Text = "Новий читач";
-            this.NewLibButton.UseVisualStyleBackColor = false;
-            this.NewLibButton.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // SearchLibButton
-            // 
-            this.SearchLibButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.SearchLibButton.FlatAppearance.BorderSize = 0;
-            this.SearchLibButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SearchLibButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SearchLibButton.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.SearchLibButton.Location = new System.Drawing.Point(0, 175);
-            this.SearchLibButton.Name = "SearchLibButton";
-            this.SearchLibButton.Size = new System.Drawing.Size(218, 41);
-            this.SearchLibButton.TabIndex = 1;
-            this.SearchLibButton.Text = "Пошук";
-            this.SearchLibButton.UseVisualStyleBackColor = false;
-            this.SearchLibButton.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // AccLibButton
-            // 
-            this.AccLibButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.AccLibButton.FlatAppearance.BorderSize = 0;
-            this.AccLibButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AccLibButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AccLibButton.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.AccLibButton.Location = new System.Drawing.Point(0, 128);
-            this.AccLibButton.Name = "AccLibButton";
-            this.AccLibButton.Size = new System.Drawing.Size(218, 41);
-            this.AccLibButton.TabIndex = 0;
-            this.AccLibButton.Text = "Облік";
-            this.AccLibButton.UseVisualStyleBackColor = false;
-            this.AccLibButton.Click += new System.EventHandler(this.button1_Click_1);
+            this.libSearch1.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.libSearch1.Location = new System.Drawing.Point(244, 42);
+            this.libSearch1.Name = "libSearch1";
+            this.libSearch1.Size = new System.Drawing.Size(553, 306);
+            this.libSearch1.TabIndex = 2;
             // 
             // RegLibPanel
             // 
@@ -382,6 +341,18 @@
             this.RegLibPanel.Size = new System.Drawing.Size(550, 306);
             this.RegLibPanel.TabIndex = 12;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.label6.Location = new System.Drawing.Point(97, 31);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(207, 20);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Реєстрація нового читача";
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(81)))), ((int)(((byte)(81)))));
@@ -391,47 +362,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(378, 216);
             this.panel1.TabIndex = 13;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.label4, 0, 2);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(24, 14);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(169, 189);
-            this.tableLayoutPanel2.TabIndex = 11;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label3.Location = new System.Drawing.Point(8, 58);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(158, 24);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Ім\'я користувача";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label4.Location = new System.Drawing.Point(90, 105);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 24);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Пароль";
             // 
             // tableLayoutPanel4
             // 
@@ -451,36 +381,6 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(153, 189);
             this.tableLayoutPanel4.TabIndex = 7;
             // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label5.Location = new System.Drawing.Point(14, 10);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 26);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Реєстрація";
-            // 
-            // regLibTextBox
-            // 
-            this.regLibTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.regLibTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.regLibTextBox.Location = new System.Drawing.Point(6, 56);
-            this.regLibTextBox.Name = "regLibTextBox";
-            this.regLibTextBox.Size = new System.Drawing.Size(140, 29);
-            this.regLibTextBox.TabIndex = 1;
-            // 
-            // passLibTextBox
-            // 
-            this.passLibTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.passLibTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passLibTextBox.Location = new System.Drawing.Point(6, 103);
-            this.passLibTextBox.Name = "passLibTextBox";
-            this.passLibTextBox.Size = new System.Drawing.Size(140, 29);
-            this.passLibTextBox.TabIndex = 2;
-            // 
             // RegLibButton
             // 
             this.RegLibButton.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -495,18 +395,146 @@
             this.RegLibButton.TabIndex = 3;
             this.RegLibButton.Text = "Зареєструвати";
             this.RegLibButton.UseVisualStyleBackColor = true;
+            this.RegLibButton.Click += new System.EventHandler(this.RegLibButton_Click);
             // 
-            // label6
+            // passLibTextBox
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label6.Location = new System.Drawing.Point(97, 31);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(207, 20);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Реєстрація нового читача";
+            this.passLibTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.passLibTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passLibTextBox.Location = new System.Drawing.Point(6, 103);
+            this.passLibTextBox.Name = "passLibTextBox";
+            this.passLibTextBox.Size = new System.Drawing.Size(140, 29);
+            this.passLibTextBox.TabIndex = 2;
+            // 
+            // regLibTextBox
+            // 
+            this.regLibTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.regLibTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.regLibTextBox.Location = new System.Drawing.Point(6, 56);
+            this.regLibTextBox.Name = "regLibTextBox";
+            this.regLibTextBox.Size = new System.Drawing.Size(140, 29);
+            this.regLibTextBox.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.label5.Location = new System.Drawing.Point(14, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(125, 26);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Реєстрація";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label4, 0, 2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(24, 14);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(169, 189);
+            this.tableLayoutPanel2.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.label4.Location = new System.Drawing.Point(90, 105);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(76, 24);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Пароль";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.label3.Location = new System.Drawing.Point(8, 58);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(158, 24);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Ім\'я користувача";
+            // 
+            // LibSidebarPan
+            // 
+            this.LibSidebarPan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(81)))), ((int)(((byte)(81)))));
+            this.LibSidebarPan.Controls.Add(this.NewLibButton);
+            this.LibSidebarPan.Controls.Add(this.SearchLibButton);
+            this.LibSidebarPan.Controls.Add(this.AccLibButton);
+            this.LibSidebarPan.Location = new System.Drawing.Point(0, 0);
+            this.LibSidebarPan.Name = "LibSidebarPan";
+            this.LibSidebarPan.Size = new System.Drawing.Size(218, 477);
+            this.LibSidebarPan.TabIndex = 0;
+            // 
+            // AccLibButton
+            // 
+            this.AccLibButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.AccLibButton.FlatAppearance.BorderSize = 0;
+            this.AccLibButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AccLibButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AccLibButton.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.AccLibButton.Location = new System.Drawing.Point(0, 128);
+            this.AccLibButton.Name = "AccLibButton";
+            this.AccLibButton.Size = new System.Drawing.Size(218, 41);
+            this.AccLibButton.TabIndex = 0;
+            this.AccLibButton.Text = "Облік";
+            this.AccLibButton.UseVisualStyleBackColor = false;
+            this.AccLibButton.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // SearchLibButton
+            // 
+            this.SearchLibButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.SearchLibButton.FlatAppearance.BorderSize = 0;
+            this.SearchLibButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchLibButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SearchLibButton.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.SearchLibButton.Location = new System.Drawing.Point(0, 175);
+            this.SearchLibButton.Name = "SearchLibButton";
+            this.SearchLibButton.Size = new System.Drawing.Size(218, 41);
+            this.SearchLibButton.TabIndex = 1;
+            this.SearchLibButton.Text = "Пошук";
+            this.SearchLibButton.UseVisualStyleBackColor = false;
+            this.SearchLibButton.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // NewLibButton
+            // 
+            this.NewLibButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.NewLibButton.FlatAppearance.BorderSize = 0;
+            this.NewLibButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NewLibButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NewLibButton.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.NewLibButton.Location = new System.Drawing.Point(0, 222);
+            this.NewLibButton.Name = "NewLibButton";
+            this.NewLibButton.Size = new System.Drawing.Size(218, 41);
+            this.NewLibButton.TabIndex = 2;
+            this.NewLibButton.Text = "Новий читач";
+            this.NewLibButton.UseVisualStyleBackColor = false;
+            this.NewLibButton.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // LibrarianPanel
+            // 
+            this.LibrarianPanel.Controls.Add(this.LibSidebarPan);
+            this.LibrarianPanel.Controls.Add(this.RegLibPanel);
+            this.LibrarianPanel.Controls.Add(this.libSearch1);
+            this.LibrarianPanel.Controls.Add(this.libAccountence1);
+            this.LibrarianPanel.Location = new System.Drawing.Point(0, 0);
+            this.LibrarianPanel.Name = "LibrarianPanel";
+            this.LibrarianPanel.Size = new System.Drawing.Size(840, 497);
+            this.LibrarianPanel.TabIndex = 11;
+            this.LibrarianPanel.Visible = false;
             // 
             // Form1
             // 
@@ -514,7 +542,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.ClientSize = new System.Drawing.Size(840, 477);
+            this.ClientSize = new System.Drawing.Size(840, 497);
             this.Controls.Add(this.LibrarianPanel);
             this.Controls.Add(this.whoiamPanel);
             this.Controls.Add(this.startingText);
@@ -530,15 +558,17 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.whoiamPanel.ResumeLayout(false);
-            this.LibrarianPanel.ResumeLayout(false);
-            this.LibSidebarPan.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.appData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.readerAccountsBindingSource)).EndInit();
             this.RegLibPanel.ResumeLayout(false);
             this.RegLibPanel.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.LibSidebarPan.ResumeLayout(false);
+            this.LibrarianPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -560,13 +590,14 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel LibrarianPanel;
-        private System.Windows.Forms.Panel LibSidebarPan;
-        private System.Windows.Forms.Button NewLibButton;
-        private System.Windows.Forms.Button SearchLibButton;
-        private System.Windows.Forms.Button AccLibButton;
-        private LibSearch libSearch1;
+        private AppData appData;
+        private System.Windows.Forms.BindingSource readerAccountsBindingSource;
+        private AppDataTableAdapters.ReaderAccountsTableAdapter readerAccountsTableAdapter;
+        private AppDataTableAdapters.TableAdapterManager tableAdapterManager;
         private LibAccountence libAccountence1;
+        private LibSearch libSearch1;
+        private System.Windows.Forms.Panel RegLibPanel;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -575,9 +606,12 @@
         private System.Windows.Forms.TextBox regLibTextBox;
         private System.Windows.Forms.TextBox passLibTextBox;
         private System.Windows.Forms.Button RegLibButton;
-        private System.Windows.Forms.Panel RegLibPanel;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel LibSidebarPan;
+        private System.Windows.Forms.Button NewLibButton;
+        private System.Windows.Forms.Button SearchLibButton;
+        private System.Windows.Forms.Button AccLibButton;
+        private System.Windows.Forms.Panel LibrarianPanel;
     }
 }
 

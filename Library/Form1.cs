@@ -70,6 +70,8 @@ namespace Library
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'appData.ReaderAccounts' table. You can move, or remove it, as needed.
+            this.readerAccountsTableAdapter.Fill(this.appData.ReaderAccounts);
             listPanel.Add(whoiamPanel);
             listPanel.Add(authPanel);
             listPanel.Add(LibrarianPanel);
@@ -82,11 +84,26 @@ namespace Library
                 listPanel[++index].BringToFront();
         }
 
+        SqlConnection Accounts = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\harva\Documents\Library\Library\Database.mdf;Integrated Security=True;");
+
         private void loginButton_Click(object sender, EventArgs e)
         {
-            SqlConnection Accounts = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\harva\Documents\Library\Library\Database.mdf;Integrated Security=True;");
             SqlDataAdapter sda = new SqlDataAdapter("Select Count (*) from LibAccounts where Username = '" + loginTextBox.Text + "' and Password = '" + loginPassTextBox.Text + "'", Accounts);
             DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows[0][0].ToString() == "1")
+            {
+                listPanel[++index].BringToFront();
+            }
+            else MessageBox.Show("Not correct");
+        }
+
+        private void RegLibButton_Click(object sender, EventArgs e)
+        {
+            //SqlConnection Accounts = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\harva\Documents\Library\Library\Database.mdf;Integrated Security=True;");
+            string addUser = ("insert into ReaderAccounts (Username, Password) values ('" + regLibTextBox + "','" + passLibTextBox + "'" , Accounts);
+            Accounts.Open();
+            
             sda.Fill(dt);
             if (dt.Rows[0][0].ToString() == "1")
             {
@@ -110,6 +127,22 @@ namespace Library
         private void button3_Click(object sender, EventArgs e)
         {
             RegLibPanel.BringToFront();
+        }
+
+        private void readerAccountsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.readerAccountsBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.appData);
+
+        }
+
+        private void readerAccountsBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.readerAccountsBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.appData);
+
         }
     }
 }
