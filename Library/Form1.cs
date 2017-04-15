@@ -85,7 +85,7 @@ namespace Library
         }
 
         SqlConnection Accounts = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\harva\Documents\Library\Library\Database.mdf;Integrated Security=True;");
-
+        
         private void loginButton_Click(object sender, EventArgs e)
         {
             SqlDataAdapter sda = new SqlDataAdapter("Select Count (*) from LibAccounts where Username = '" + loginTextBox.Text + "' and Password = '" + loginPassTextBox.Text + "'", Accounts);
@@ -100,16 +100,14 @@ namespace Library
 
         private void RegLibButton_Click(object sender, EventArgs e)
         {
-            //SqlConnection Accounts = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\harva\Documents\Library\Library\Database.mdf;Integrated Security=True;");
-            string addUser = ("insert into ReaderAccounts (Username, Password) values ('" + regLibTextBox + "','" + passLibTextBox + "'" , Accounts);
             Accounts.Open();
-            
-            sda.Fill(dt);
-            if (dt.Rows[0][0].ToString() == "1")
-            {
-                listPanel[++index].BringToFront();
-            }
-            else MessageBox.Show("Not correct");
+            SqlCommand cmd = Accounts.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "INSERT into ReaderAccounts (Username, Password) VALUES ('" + regLibTextBox.Text + "', '" + passLibTextBox.Text + "')";
+            cmd.ExecuteNonQuery();
+            Accounts.Close();
+
+            MessageBox.Show("User added successfully");
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -142,6 +140,11 @@ namespace Library
             this.Validate();
             this.readerAccountsBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.appData);
+
+        }
+
+        private void libAccountence1_Load(object sender, EventArgs e)
+        {
 
         }
     }
