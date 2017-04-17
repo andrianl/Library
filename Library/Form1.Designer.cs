@@ -91,7 +91,7 @@
             this.startingText.Font = new System.Drawing.Font("Calibri Light", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.startingText.Location = new System.Drawing.Point(0, 0);
             this.startingText.Name = "startingText";
-            this.startingText.Size = new System.Drawing.Size(840, 497);
+            this.startingText.Size = new System.Drawing.Size(840, 476);
             this.startingText.TabIndex = 1;
             this.startingText.Text = "label1";
             this.startingText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -313,33 +313,34 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.BooksTableAdapter = null;
             this.tableAdapterManager.LibAccountsTableAdapter = null;
             this.tableAdapterManager.ReaderAccountsTableAdapter = this.readerAccountsTableAdapter;
             this.tableAdapterManager.UpdateOrder = Library.AppDataTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // libAccountence1
             // 
-            this.libAccountence1.Location = new System.Drawing.Point(247, 33);
+            this.libAccountence1.Location = new System.Drawing.Point(234, 12);
             this.libAccountence1.Name = "libAccountence1";
-            this.libAccountence1.Size = new System.Drawing.Size(550, 290);
+            this.libAccountence1.Size = new System.Drawing.Size(591, 452);
             this.libAccountence1.TabIndex = 1;
             this.libAccountence1.Load += new System.EventHandler(this.libAccountence1_Load);
             // 
             // libSearch1
             // 
             this.libSearch1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.libSearch1.Location = new System.Drawing.Point(244, 42);
+            this.libSearch1.Location = new System.Drawing.Point(234, 12);
             this.libSearch1.Name = "libSearch1";
-            this.libSearch1.Size = new System.Drawing.Size(553, 306);
+            this.libSearch1.Size = new System.Drawing.Size(591, 449);
             this.libSearch1.TabIndex = 2;
             // 
             // RegLibPanel
             // 
             this.RegLibPanel.Controls.Add(this.panel1);
             this.RegLibPanel.Controls.Add(this.label6);
-            this.RegLibPanel.Location = new System.Drawing.Point(247, 42);
+            this.RegLibPanel.Location = new System.Drawing.Point(234, 12);
             this.RegLibPanel.Name = "RegLibPanel";
-            this.RegLibPanel.Size = new System.Drawing.Size(550, 306);
+            this.RegLibPanel.Size = new System.Drawing.Size(591, 452);
             this.RegLibPanel.TabIndex = 12;
             // 
             // panel1
@@ -533,7 +534,7 @@
             this.LibrarianPanel.Controls.Add(this.libSearch1);
             this.LibrarianPanel.Location = new System.Drawing.Point(0, 0);
             this.LibrarianPanel.Name = "LibrarianPanel";
-            this.LibrarianPanel.Size = new System.Drawing.Size(840, 497);
+            this.LibrarianPanel.Size = new System.Drawing.Size(840, 476);
             this.LibrarianPanel.TabIndex = 11;
             this.LibrarianPanel.Visible = false;
             // 
@@ -543,7 +544,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.ClientSize = new System.Drawing.Size(840, 497);
+            this.ClientSize = new System.Drawing.Size(840, 476);
             this.Controls.Add(this.LibrarianPanel);
             this.Controls.Add(this.whoiamPanel);
             this.Controls.Add(this.startingText);
