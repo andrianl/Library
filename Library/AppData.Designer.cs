@@ -1096,6 +1096,7 @@ namespace Library {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
                 this.columnId.AllowDBNull = false;
+                this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
                 this.columnName.MaxLength = 50;
                 this.columnAuthor.MaxLength = 50;

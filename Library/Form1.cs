@@ -13,7 +13,6 @@ namespace Library
 {
     public partial class Form1 : Form
     {
-
         List<Panel> listPanel = new List<Panel>();
         int index;
 
@@ -54,7 +53,6 @@ namespace Library
                 authPanel.Visible = true;
                 LibrarianPanel.Visible = true;
             }    
-   
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -132,7 +130,6 @@ namespace Library
             this.Validate();
             this.readerAccountsBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.appData);
-
         }
 
         private void readerAccountsBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
@@ -140,10 +137,14 @@ namespace Library
             this.Validate();
             this.readerAccountsBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.appData);
-
         }
 
         private void libAccountence1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void libSearch1_Load(object sender, EventArgs e)
         {
 
         }

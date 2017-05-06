@@ -21,7 +21,7 @@ namespace Library
         private void button1_Click(object sender, EventArgs e)
         {
             SqlConnection Readers = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\harva\Documents\Library\Library\Database.mdf;Integrated Security=True;");
-            SqlDataAdapter sda = new SqlDataAdapter(@"SELECT Username, Password FROM ReaderAccounts", Readers);
+            SqlDataAdapter sda = new SqlDataAdapter(@"SELECT Id, Username, Password FROM ReaderAccounts", Readers);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             dataGridView1.DataSource = dt;

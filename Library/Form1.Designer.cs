@@ -328,11 +328,12 @@
             // 
             // libSearch1
             // 
-            this.libSearch1.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.libSearch1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.libSearch1.Location = new System.Drawing.Point(234, 12);
             this.libSearch1.Name = "libSearch1";
             this.libSearch1.Size = new System.Drawing.Size(591, 449);
             this.libSearch1.TabIndex = 2;
+            this.libSearch1.Load += new System.EventHandler(this.libSearch1_Load);
             // 
             // RegLibPanel
             // 
@@ -529,9 +530,9 @@
             // LibrarianPanel
             // 
             this.LibrarianPanel.Controls.Add(this.LibSidebarPan);
+            this.LibrarianPanel.Controls.Add(this.libSearch1);
             this.LibrarianPanel.Controls.Add(this.libAccountence1);
             this.LibrarianPanel.Controls.Add(this.RegLibPanel);
-            this.LibrarianPanel.Controls.Add(this.libSearch1);
             this.LibrarianPanel.Location = new System.Drawing.Point(0, 0);
             this.LibrarianPanel.Name = "LibrarianPanel";
             this.LibrarianPanel.Size = new System.Drawing.Size(840, 476);
