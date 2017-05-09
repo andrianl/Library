@@ -82,8 +82,19 @@ namespace Library
                 listPanel[++index].BringToFront();
         }
 
+        private void headButton_Click(object sender, EventArgs e)
+        {
+            if (index < listPanel.Count - 1)
+                listPanel[++index].BringToFront();         
+        }
+
         SqlConnection Accounts = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\harva\Documents\Library\Library\Database.mdf;Integrated Security=True;");
-        
+        private FormClosedEventHandler form2_FormClosed;
+        void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
+        }
+
         private void loginButton_Click(object sender, EventArgs e)
         {
             SqlDataAdapter sda = new SqlDataAdapter("Select Count (*) from LibAccounts where Username = '" + loginTextBox.Text + "' and Password = '" + loginPassTextBox.Text + "'", Accounts);
@@ -93,7 +104,20 @@ namespace Library
             {
                 listPanel[++index].BringToFront();
             }
-            else MessageBox.Show("Not correct");
+            else
+            {
+                SqlDataAdapter head = new SqlDataAdapter("Select Count (*) from HeadAccounts where Username = '" + loginTextBox.Text + "' and Password = '" + loginPassTextBox.Text + "'", Accounts);
+                DataTable hdt = new DataTable();
+                head.Fill(hdt);
+                if (hdt.Rows[0][0].ToString() == "1")
+                {
+                    this.Hide();
+                    Form2 form2 = new Form2();
+                    form2.Show();
+                    form2.FormClosed += new FormClosedEventHandler(Form2_FormClosed);
+                }
+                else MessageBox.Show("Try again");
+            }
         }
 
         private void RegLibButton_Click(object sender, EventArgs e)
@@ -125,6 +149,8 @@ namespace Library
             RegLibPanel.BringToFront();
         }
 
+     
+
         private void readerAccountsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
@@ -148,5 +174,7 @@ namespace Library
         {
 
         }
+
+        
     }
 }

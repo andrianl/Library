@@ -23,7 +23,7 @@ namespace Library
         //updating Book database 
         private void UpdateBookL_Click(object sender, EventArgs e)
         {
-            SqlDataAdapter sda = new SqlDataAdapter(@"SELECT Name, Author, Genre FROM Books", Books);
+            SqlDataAdapter sda = new SqlDataAdapter(@"SELECT * FROM Books", Books);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             dataGridView1.DataSource = dt;
@@ -33,7 +33,7 @@ namespace Library
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             //some code
-            SqlDataAdapter sda = new SqlDataAdapter(@"SELECT * FROM Books WHERE Author = '" + textBox1.Text + "'", Books);
+            SqlDataAdapter sda = new SqlDataAdapter(@"SELECT * FROM Books WHERE Author LIKE '" + textBox1.Text + "%'", Books);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             dataGridView1.DataSource = dt;

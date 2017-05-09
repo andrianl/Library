@@ -4,6 +4,13 @@
 
     partial class AppData
     {
+        partial class BooksDataTable
+        {
+        }
+
+        partial class LibAccountsDataTable
+        {
+        }
     }
 }
 

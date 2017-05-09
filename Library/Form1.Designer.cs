@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.startingText = new System.Windows.Forms.Label();
             this.readerButton = new System.Windows.Forms.Button();
@@ -91,7 +92,7 @@
             this.startingText.Font = new System.Drawing.Font("Calibri Light", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.startingText.Location = new System.Drawing.Point(0, 0);
             this.startingText.Name = "startingText";
-            this.startingText.Size = new System.Drawing.Size(840, 476);
+            this.startingText.Size = new System.Drawing.Size(840, 477);
             this.startingText.TabIndex = 1;
             this.startingText.Text = "label1";
             this.startingText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -145,6 +146,7 @@
             this.headButton.TabIndex = 4;
             this.headButton.Text = "Я завідувач";
             this.headButton.UseVisualStyleBackColor = false;
+            this.headButton.Click += new System.EventHandler(this.headButton_Click);
             // 
             // decButton
             // 
@@ -314,6 +316,7 @@
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.BooksTableAdapter = null;
+            this.tableAdapterManager.HeadAccountsTableAdapter = null;
             this.tableAdapterManager.LibAccountsTableAdapter = null;
             this.tableAdapterManager.ReaderAccountsTableAdapter = this.readerAccountsTableAdapter;
             this.tableAdapterManager.UpdateOrder = Library.AppDataTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
@@ -329,7 +332,7 @@
             // libSearch1
             // 
             this.libSearch1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.libSearch1.Location = new System.Drawing.Point(234, 12);
+            this.libSearch1.Location = new System.Drawing.Point(0, 0);
             this.libSearch1.Name = "libSearch1";
             this.libSearch1.Size = new System.Drawing.Size(591, 449);
             this.libSearch1.TabIndex = 2;
@@ -339,6 +342,7 @@
             // 
             this.RegLibPanel.Controls.Add(this.panel1);
             this.RegLibPanel.Controls.Add(this.label6);
+            this.RegLibPanel.Controls.Add(this.libSearch1);
             this.RegLibPanel.Location = new System.Drawing.Point(234, 12);
             this.RegLibPanel.Name = "RegLibPanel";
             this.RegLibPanel.Size = new System.Drawing.Size(591, 452);
@@ -508,7 +512,7 @@
             this.SearchLibButton.Name = "SearchLibButton";
             this.SearchLibButton.Size = new System.Drawing.Size(218, 41);
             this.SearchLibButton.TabIndex = 1;
-            this.SearchLibButton.Text = "Пошук";
+            this.SearchLibButton.Text = "Пошук книги";
             this.SearchLibButton.UseVisualStyleBackColor = false;
             this.SearchLibButton.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -523,16 +527,15 @@
             this.AccLibButton.Name = "AccLibButton";
             this.AccLibButton.Size = new System.Drawing.Size(218, 41);
             this.AccLibButton.TabIndex = 0;
-            this.AccLibButton.Text = "Облік";
+            this.AccLibButton.Text = "Облік читачів";
             this.AccLibButton.UseVisualStyleBackColor = false;
             this.AccLibButton.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // LibrarianPanel
             // 
             this.LibrarianPanel.Controls.Add(this.LibSidebarPan);
-            this.LibrarianPanel.Controls.Add(this.libSearch1);
-            this.LibrarianPanel.Controls.Add(this.libAccountence1);
             this.LibrarianPanel.Controls.Add(this.RegLibPanel);
+            this.LibrarianPanel.Controls.Add(this.libAccountence1);
             this.LibrarianPanel.Location = new System.Drawing.Point(0, 0);
             this.LibrarianPanel.Name = "LibrarianPanel";
             this.LibrarianPanel.Size = new System.Drawing.Size(840, 476);
@@ -545,12 +548,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.ClientSize = new System.Drawing.Size(840, 476);
-            this.Controls.Add(this.LibrarianPanel);
+            this.ClientSize = new System.Drawing.Size(840, 477);
             this.Controls.Add(this.whoiamPanel);
             this.Controls.Add(this.startingText);
             this.Controls.Add(this.authPanel);
+            this.Controls.Add(this.LibrarianPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Form1";
             this.TopMost = true;
